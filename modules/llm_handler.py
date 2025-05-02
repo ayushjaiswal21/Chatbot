@@ -88,17 +88,14 @@ class LLMHandler:
                 return "An error occurred while generating the response. Please try again."
 
     def _format_educational_response(self, text: str) -> str:
-        """Format the LLM response with proper error handling"""
         try:
-            text = text.strip()
-            if text.startswith('{') and text.endswith('}'):
-                try:
-                    data = json.loads(text)
-                    if isinstance(data, dict):
-                        return data.get('response', text)
-                except json.JSONDecodeError:
-                    pass
-            return text
+        # Extract the first JSON block
+            json_match = re.search(r'\{.*?\}', text, re.DOTALL)
+            if not json_match:
+                raise ValueError("No JSON block found in the response")
+        
+            clean_response = json_match.group()
+            return clean_response
         except Exception as e:
             logger.error(f"Response formatting failed: {str(e)}")
             return text

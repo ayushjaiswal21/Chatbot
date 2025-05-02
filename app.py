@@ -37,9 +37,9 @@ CONFIG = {
     'SUBJECT_MODELS': {
         'math': 'wizard-math:7b',
         'science': 'dolphin-mistral:latest',
-        'history': 'mistral-7b-openorca',
-        'english': 'mistral-7b-instruct',
-        'gk': 'mistral-7b-instruct'
+        'history': 'mistral-openorca:latest',  # Fixed name
+        'english': 'mistral:7b-instruct',      # Fixed name
+        'gk': 'mistral:7b-instruct'           # Fixed name
     }
 }
 
@@ -58,6 +58,17 @@ def load_prompt_templates():
             logger.warning(f"No prompt template found for {subject}")
             templates[subject] = f"You are an expert {subject} tutor. Teach effectively."
     return templates
+def init_models():
+    """Ensure all required Ollama models are available"""
+    try:
+        available_models = [model.split(':')[0] for model in os.popen('ollama list').read().splitlines()]
+        for model in set(CONFIG['SUBJECT_MODELS'].values()):
+            if model.split(':')[0] not in available_models:
+                logger.error(f"Model not found: {model}")
+                raise ValueError(f"Model not found: {model}")
+            logger.info(f"Model configured: {model}")
+    except Exception as e:
+        logger.error(f"Model initialization error: {str(e)}")
 
 # Then initialize prompts AFTER CONFIG is defined
 PROMPT_TEMPLATES = load_prompt_templates()
@@ -417,10 +428,13 @@ Format as JSON with these exact keys: question, options, correct_answer, explana
             # Debug logging (remove in production)
             logger.debug(f"Raw LLM response: {response}")
             
-            # Parse and validate response
+            # Extract the first JSON block from the response
             try:
-                # Handle cases where response might be wrapped in markdown
-                clean_response = response.replace('```json', '').replace('```', '').strip()
+                json_match = re.search(r'\{.*?\}', response, re.DOTALL)
+                if not json_match:
+                    raise ValueError("No JSON block found in the response")
+                
+                clean_response = json_match.group()
                 question = json.loads(clean_response)
                 
                 # Validate response structure

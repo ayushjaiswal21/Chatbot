@@ -34,3 +34,7 @@ educational-chatbot/
 └── database/
     └── user_data.db       # SQLite database for user data
 ```
+ollama pull wizard-math:7b for maths
+ollama pull dolphin-mistral:latest for English 
+ollama pull mistral-7b-openorca for science and history
+ollama pull mistral-7b-instruct for gk

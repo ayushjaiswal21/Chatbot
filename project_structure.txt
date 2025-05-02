@@ -1,40 +1,49 @@
-# Educational Chatbot Project Structure
-
-```
-educational-chatbot/
+#educational-chatbot/
 │
 ├── app.py                 # Main Flask application
 ├── requirements.txt       # Python dependencies
 │
 ├── static/
 │   ├── css/
-│   │   └── style.css      # Main stylesheet
+│   │   ├── style.css      # Main stylesheet
+│   │   ├── chatbot.css    # Chatbot-specific styles
+│   │   └── auth.css       # Authentication page styles
 │   │
 │   ├── js/
 │   │   ├── main.js        # Main JavaScript
-│   │   └── dashboard.js   # Dashboard functionality
+│   │   ├── dashboard.js   # Dashboard functionality
+│   │   └── auth.js        # Authentication functionality
 │
 ├── templates/
 │   ├── index.html         # Landing page
+│   ├── home.html          # Home page for logged-in users
 │   ├── dashboard.html     # User dashboard
-│   └── chatbot.html       # Chatbot interface
+│   ├── chatbot.html       # Chatbot interface
+│   │
+│   ├── auth/              # Authentication templates
+│   │   ├── login.html     # Login page
+│   │   └── signup.html    # Signup page
+│   │
+│   ├── errors/            # Error pages
+│       ├── 404.html       # 404 Not Found page
+│       └── 500.html       # 500 Internal Server Error page
 │
 ├── modules/
 │   ├── __init__.py
 │   ├── llm_handler.py     # Ollama API handling
 │   ├── user_manager.py    # User session management
 │   ├── analytics.py       # User analytics processing
+│   ├── prompt_utils.py    # Utilities for handling prompts
 │   └── prompts/           # LLM prompt templates
-│       ├── math.txt
-│       ├── science.txt
-│       ├── history.txt
-│       ├── english.txt
-│       └── gk.txt         # General Knowledge
+│       ├── math.txt       # Math-specific prompts
+│       ├── science.txt    # Science-specific prompts
+│       ├── history.txt    # History-specific prompts
+│       ├── english.txt    # English-specific prompts
+│       └── gk.txt         # General Knowledge prompts
 │
-└── database/
-    └── user_data.db       # SQLite database for user data
+├── database/
+│   └── edu_chat.db        # SQLite database for user data
+│
+└── logs/
+    └── app.log            # Application logs
 ```
-ollama pull wizard-math:7b for maths
-ollama pull dolphin-mistral:latest for English 
-ollama pull mistral-7b-openorca for science and history
-ollama pull mistral-7b-instruct for gk

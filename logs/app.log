@@ -1299,3 +1299,67 @@ The answer is: {
 2025-05-02 21:46:06,423 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
 2025-05-02 21:46:06,424 - app - ERROR - Unexpected error in question generation: name 'requests' is not defined
 2025-05-02 21:46:06,424 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:46:06] "[35m[1mPOST /api/get_questions HTTP/1.1[0m" 500 -
+2025-05-02 21:59:26,137 - app - INFO - Database initialized successfully
+2025-05-02 21:59:26,137 - app - INFO - Model configured: mistral:7b-instruct
+2025-05-02 21:59:26,138 - app - INFO - Model configured: dolphin-mistral:latest
+2025-05-02 21:59:26,138 - app - INFO - Model configured: mistral-openorca:latest
+2025-05-02 21:59:26,138 - app - INFO - Model configured: wizard-math:7b
+2025-05-02 21:59:26,195 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-02 21:59:26,195 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-02 21:59:34,037 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:34] "GET / HTTP/1.1" 200 -
+2025-05-02 21:59:34,172 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 21:59:45,698 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:45] "GET /login HTTP/1.1" 200 -
+2025-05-02 21:59:45,725 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:45] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2025-05-02 21:59:45,736 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:45] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2025-05-02 21:59:47,035 - app - INFO - User logged in: ayush
+2025-05-02 21:59:47,036 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:47] "POST /login HTTP/1.1" 200 -
+2025-05-02 21:59:47,072 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:47] "GET /dashboard HTTP/1.1" 200 -
+2025-05-02 21:59:47,091 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 21:59:47,095 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:47] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-02 21:59:47,133 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:47] "GET /api/get_analytics HTTP/1.1" 200 -
+2025-05-02 21:59:50,042 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:50] "GET /chatbot?topic=english HTTP/1.1" 200 -
+2025-05-02 21:59:50,064 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 21:59:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 22:01:09,187 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:01:09,188 - app - ERROR - Unexpected error in question generation: name 'requests' is not defined
+2025-05-02 22:01:09,189 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:01:09] "[35m[1mPOST /api/get_questions HTTP/1.1[0m" 500 -
+2025-05-02 22:01:28,279 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:01:28] "GET /chatbot?topic=math HTTP/1.1" 200 -
+2025-05-02 22:01:28,307 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:01:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 22:03:11,118 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:03:11,119 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:03:11] "POST /api/get_questions HTTP/1.1" 200 -
+2025-05-02 22:07:35,570 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:07:35,589 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:07:35] "POST /api/chat HTTP/1.1" 200 -
+2025-05-02 22:08:43,237 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:08:43,238 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:08:43] "POST /api/get_questions HTTP/1.1" 200 -
+2025-05-02 22:09:14,145 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:09:14] "GET /dashboard HTTP/1.1" 200 -
+2025-05-02 22:09:14,174 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:09:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 22:09:14,176 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:09:14] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-02 22:09:14,209 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:09:14] "GET /api/get_analytics HTTP/1.1" 200 -
+2025-05-02 22:15:47,129 - app - INFO - Database initialized successfully
+2025-05-02 22:15:47,130 - app - INFO - Model configured: dolphin-mistral:latest
+2025-05-02 22:15:47,130 - app - INFO - Model configured: mistral-openorca:latest
+2025-05-02 22:15:47,130 - app - INFO - Model configured: wizard-math:7b
+2025-05-02 22:15:47,130 - app - INFO - Model configured: mistral:7b-instruct
+2025-05-02 22:15:47,164 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-02 22:15:47,164 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-02 22:15:50,319 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:50] "GET / HTTP/1.1" 200 -
+2025-05-02 22:15:50,566 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 22:15:51,695 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:51] "GET /login HTTP/1.1" 200 -
+2025-05-02 22:15:51,722 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:51] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2025-05-02 22:15:51,741 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:51] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2025-05-02 22:15:53,125 - app - INFO - User logged in: ayush
+2025-05-02 22:15:53,125 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:53] "POST /login HTTP/1.1" 200 -
+2025-05-02 22:15:53,146 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:53] "GET /dashboard HTTP/1.1" 200 -
+2025-05-02 22:15:53,168 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 22:15:53,172 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:53] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-02 22:15:53,236 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:53] "GET /api/get_analytics HTTP/1.1" 200 -
+2025-05-02 22:15:54,354 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:54] "GET /chatbot?topic=math HTTP/1.1" 200 -
+2025-05-02 22:15:54,378 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:15:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 22:17:17,646 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:17:17,647 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:17:17] "POST /api/get_questions HTTP/1.1" 200 -
+2025-05-02 22:19:28,039 - modules.llm_handler - WARNING - Attempt 1 failed, retrying in 5 seconds...
+2025-05-02 22:19:39,208 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:19:39,235 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:19:39] "POST /api/chat HTTP/1.1" 200 -
+2025-05-02 22:21:30,444 - modules.llm_handler - ERROR - Response formatting failed: name 're' is not defined
+2025-05-02 22:21:30,445 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:21:30] "POST /api/get_questions HTTP/1.1" 200 -

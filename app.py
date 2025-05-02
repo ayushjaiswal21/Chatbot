@@ -11,6 +11,7 @@ from werkzeug.exceptions import HTTPException
 import random
 from modules.llm_handler import LLMHandler
 import json  
+from markupsafe import escape
 
 llm = LLMHandler()
 # First ensure required directories exist
@@ -58,10 +59,27 @@ def load_prompt_templates():
             logger.warning(f"No prompt template found for {subject}")
             templates[subject] = f"You are an expert {subject} tutor. Teach effectively."
     return templates
+
+def format_prompt_with_values(topic, level, user_query):
+    """Format the prompt with topic, level, and user query"""
+    prompt_template = PROMPT_TEMPLATES.get(topic, PROMPT_TEMPLATES['math'])
+    return LLMHandler.format_prompt(
+        prompt_template,
+        {
+            "TOPIC": topic,
+            "LEVEL": level,
+            "USER_QUERY": user_query
+        }
+    )
+
 def init_models():
     """Ensure all required Ollama models are available"""
     try:
-        available_models = [model.split(':')[0] for model in os.popen('ollama list').read().splitlines()]
+        available_models_output = os.popen('ollama list').read()
+        if not available_models_output:
+            raise ValueError("Failed to retrieve available models from Ollama")
+        
+        available_models = [model.split(':')[0] for model in available_models_output.splitlines()]
         for model in set(CONFIG['SUBJECT_MODELS'].values()):
             if model.split(':')[0] not in available_models:
                 logger.error(f"Model not found: {model}")
@@ -69,8 +87,8 @@ def init_models():
             logger.info(f"Model configured: {model}")
     except Exception as e:
         logger.error(f"Model initialization error: {str(e)}")
+        raise
 
-# Then initialize prompts AFTER CONFIG is defined
 PROMPT_TEMPLATES = load_prompt_templates()
 
 app = Flask(__name__)
@@ -188,6 +206,19 @@ def get_db_connection():
     conn = sqlite3.connect(CONFIG['DATABASE_PATH'])
     conn.row_factory = sqlite3.Row
     return conn
+
+def load_prompt_templates():
+    """Load all prompt templates from files"""
+    templates = {}
+    for subject in CONFIG['SUBJECT_MODELS'].keys():
+        try:
+            with open(f"{PROMPT_TEMPLATES_DIR}/{subject}.txt", "r", encoding='utf-8') as f:
+                content = f.read()
+                templates[subject] = content
+        except FileNotFoundError:
+            logger.warning(f"No prompt template found for {subject}")
+            templates[subject] = f"You are an expert {subject} tutor. Please provide detailed and helpful responses."
+    return templates
 
 # Authentication Routes
 @app.route('/signup', methods=['GET', 'POST'])
@@ -359,15 +390,14 @@ def chatbot():
         return redirect(url_for('login'))
     
     topic = request.args.get('topic', 'math').lower()
-    
     if topic not in CONFIG['SUBJECT_MODELS']:
         logger.warning(f"Invalid topic requested: {topic}")
         return redirect(url_for('dashboard'))
     
     try:
         return render_template('chatbot.html', 
-                             topic=topic,
-                             username=session.get('username', 'User'))
+                             topic=escape(topic),
+                             username=escape(session.get('username', 'User')))
     except Exception as e:
         logger.error(f"Chatbot error: {str(e)}")
         return redirect(url_for('dashboard'))

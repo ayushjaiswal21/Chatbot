@@ -904,3 +904,14 @@ NameError: name 'SUBJECT_MODELS' is not defined
 2025-05-02 10:39:34,364 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 10:39:34] "GET /api/get_analytics HTTP/1.1" 200 -
 2025-05-02 10:39:35,612 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 10:39:35] "GET /chatbot?topic=math HTTP/1.1" 200 -
 2025-05-02 10:39:35,633 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 10:39:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 10:40:54,010 - app - ERROR - JSON parse error: Extra data: line 9 column 1 (char 296). Response: ```json
+{
+  "question": "What is the area of a square with side length 4?",
+  "options": ["16", "12", "4", "8"],
+  "correct_answer": "16",
+  "explanation": "The area of a square is calculated by squaring the length of one of its sides. In this case, the side length is 4, so the area is $4^2 = 16$."
+}
+```
+
+The answer is: {"question": "What is the area of a square with side length 4?", "options": ["16", "12", "4", "8"], "correct_answer": "16", "explanation": "The area of a square is calculated by squaring the length of one of its sides. In this case, the side length is 4, so the area is $4^2 = 16$."}.
+2025-05-02 10:40:54,011 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 10:40:54] "[35m[1mPOST /api/get_questions HTTP/1.1[0m" 502 -

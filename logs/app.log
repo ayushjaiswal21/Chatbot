@@ -915,3 +915,35 @@ NameError: name 'SUBJECT_MODELS' is not defined
 
 The answer is: {"question": "What is the area of a square with side length 4?", "options": ["16", "12", "4", "8"], "correct_answer": "16", "explanation": "The area of a square is calculated by squaring the length of one of its sides. In this case, the side length is 4, so the area is $4^2 = 16$."}.
 2025-05-02 10:40:54,011 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 10:40:54] "[35m[1mPOST /api/get_questions HTTP/1.1[0m" 502 -
+2025-05-02 12:06:28,446 - app - INFO - Database initialized successfully
+2025-05-02 12:06:28,447 - app - INFO - Model configured: mistral-7b-instruct
+2025-05-02 12:06:28,447 - app - INFO - Model configured: mistral-7b-openorca
+2025-05-02 12:06:28,447 - app - INFO - Model configured: dolphin-mistral:latest
+2025-05-02 12:06:28,447 - app - INFO - Model configured: wizard-math:7b
+2025-05-02 12:06:28,459 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-02 12:06:28,460 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-02 12:06:32,880 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:32] "GET / HTTP/1.1" 200 -
+2025-05-02 12:06:32,978 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 12:06:40,084 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:40] "GET /login HTTP/1.1" 200 -
+2025-05-02 12:06:40,107 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:40] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2025-05-02 12:06:40,111 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:40] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2025-05-02 12:06:42,606 - app - INFO - User logged in: ayush
+2025-05-02 12:06:42,607 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:42] "POST /login HTTP/1.1" 200 -
+2025-05-02 12:06:42,628 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:42] "GET /dashboard HTTP/1.1" 200 -
+2025-05-02 12:06:42,651 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 12:06:42,679 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:42] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-02 12:06:42,699 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:06:42] "GET /api/get_analytics HTTP/1.1" 200 -
+2025-05-02 12:07:20,178 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:07:20] "GET /chatbot?topic=math HTTP/1.1" 200 -
+2025-05-02 12:07:20,197 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:07:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-02 12:08:37,021 - app - ERROR - JSON parse error: Extra data: line 9 column 1 (char 231). Response: ```json
+{
+  "question": "Which of the following is equal to 1/2?",
+  "options": ["1", "2", "0.5", "0.25"],
+  "correct_answer": "0.5",
+  "explanation": "To find 1/2, we can divide 1 by 2, which gives us 0.5. The correct answer is 0.5."
+}
+```
+
+This question tests the student's understanding of fractions and division. The correct answer is 0.5, which is the result of dividing 1 by 2. It's important to encourage the student to think about the problem and understand the concept behind it, rather than just providing a quick answer.
+2025-05-02 12:08:37,022 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 12:08:37] "[35m[1mPOST /api/get_questions HTTP/1.1[0m" 502 -

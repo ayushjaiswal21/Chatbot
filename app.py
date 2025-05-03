@@ -12,7 +12,7 @@ import random
 from modules.llm_handler import LLMHandler
 import json  
 from markupsafe import escape
-
+import requests
 llm = LLMHandler()
 # First ensure required directories exist
 os.makedirs('logs', exist_ok=True)
@@ -513,13 +513,16 @@ def handle_chat():
         data = request.json
         user_id = session['user_id']
         topic = data.get('topic', 'math')
-        user_answer = data.get('message', '')
+        user_answer = data.get('message', '').strip().lower()
         question = data.get('question', '')
-        expected_answer = data.get('expected_answer', '')
+        expected_answer = data.get('expected_answer', '').strip().lower()
         start_time = data.get('start_time', time.time())
         
         # Calculate response time
         response_time = time.time() - float(start_time)
+        
+        # Determine correctness
+        is_correct = user_answer == expected_answer
         
         # Get the appropriate prompt template
         prompt_template = PROMPT_TEMPLATES.get(topic, PROMPT_TEMPLATES['math'])
@@ -559,7 +562,7 @@ def handle_chat():
                 topic,
                 question,
                 user_answer,
-                user_answer.lower().strip() == expected_answer.lower().strip(),
+                is_correct,
                 response_time,
                 model
             ))
@@ -567,7 +570,8 @@ def handle_chat():
         
         return jsonify({
             'response': llm_response,
-            'response_time': response_time
+            'response_time': response_time,
+            'is_correct': is_correct
         })
         
     except Exception as e:
